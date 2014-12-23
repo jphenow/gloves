@@ -8,16 +8,17 @@ module Gloves
     attr_accessor :subtitle
 
     def initialize(name)
-      @name = name
+      @name = name.to_s
+      @called_block = nil
     end
 
     def output
       {
         uid: name,
-        title: name || title,
+        title: title || name,
         subtitle: subtitle || title || name,
-        arg: "do #{name}", # TODO
-        valid: "yes"
+        arg: "do #{name}", # Passed to next script, may be unnecessary for how we solve
+        valid: "yes" # Autocomplete off by default w/ "yes"
       }
     end
 

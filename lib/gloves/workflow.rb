@@ -48,7 +48,7 @@ module Gloves
     end
 
     def store
-      @store ||= Storage.new alfred
+      @store ||= Storage.new alfred.storage_path
     end
 
     def run!
@@ -67,11 +67,8 @@ module Gloves
     private :actionable?
 
     def arg_words
-      if xml_input?
-        xml_args.to_s.strip.split(" ")
-      else
-        raw_args.to_s.strip.split(" ")
-      end
+      arg_string = xml_input? ? xml_args : raw_args
+      arg_string.to_s.strip.split(" ")
     end
     private :arg_words
 
