@@ -1,6 +1,6 @@
 # Gloves
 
-TODO: Write a gem description
+[![Build Status](https://travis-ci.org/jphenow/gloves.svg?branch=master)](https://travis-ci.org/jphenow/gloves)
 
 ## Installation
 
