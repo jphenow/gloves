@@ -2,6 +2,8 @@ require 'json'
 module Gloves
   class Storage
     class JSONStore
+      attr_reader :location
+
       def initialize(location)
         @location = location
       end
@@ -38,6 +40,8 @@ module Gloves
 
       def raw
         File.read(location)
+      rescue Errno::ENOENT
+        "{}"
       end
       private :raw
     end
