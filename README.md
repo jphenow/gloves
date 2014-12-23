@@ -1,6 +1,8 @@
 # Gloves
 
 [![Build Status](https://travis-ci.org/jphenow/gloves.svg?branch=master)](https://travis-ci.org/jphenow/gloves)
+[![Code Climate](https://codeclimate.com/github/jphenow/gloves/badges/gpa.svg)](https://codeclimate.com/github/jphenow/gloves)
+[![Test Coverage](https://codeclimate.com/github/jphenow/gloves/badges/coverage.svg)](https://codeclimate.com/github/jphenow/gloves)
 
 ## Installation
 
