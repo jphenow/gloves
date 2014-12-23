@@ -1,8 +1,3 @@
-# TODO Find out what we can do about loading from your script being run
-require 'rubygems' unless defined? Gem # rubygems is only needed in 1.8
-require './bundle/bundler/setup'
-require 'alfred'
-
 require 'gloves/actions'
 require 'gloves/action'
 
@@ -10,6 +5,18 @@ module Gloves
   class Workflow
     attr_reader :alfred
     attr_reader :actions
+
+    def self.inherited(sub)
+      call_stack = if Kernel.respond_to?(:caller_locations)
+                     caller_locations.map { |l| l.absolute_path || l.path }
+                   else
+                     caller.map { |p| p.sub(/:\d+.*/, '') }
+                   end
+      base_path = File.dirname(call_stack.detect { |p| p !~ %r[gloves[\w.-]*/lib/gloves] })
+      base_pathname = Pathname.new(base_path)
+
+      Gloves.boot sub, base_pathname
+    end
 
     def initialize(without_run = false)
       do_run = !without_run && actionable?

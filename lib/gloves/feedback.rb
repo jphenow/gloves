@@ -5,7 +5,7 @@ module Gloves
     end
 
     def clipboard(string)
-      IO.popen('pbcopy', 'w') { |f| f << string}
+      IO.popen('pbcopy', 'w') { |f| f << string }
     end
 
     def notify(options)
