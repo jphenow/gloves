@@ -14,9 +14,11 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-ENV["GLOVES_ENV"] = 'test'
-require 'simplecov'
-SimpleCov.start
+ENV['GLOVES_ENV'] = 'test'
+ENV['CODECLIMATE_REPO_TOKEN'] = 'e22de0126854df8eae6df0bf67c95cdf9e225e638b23b9d3d03de6d0450dfa2a'
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
