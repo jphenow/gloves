@@ -6,7 +6,7 @@ module Gloves
     attr_reader :alfred
     attr_reader :actions
 
-    def self.inherited(sub)
+    def new(*)
       call_stack = if Kernel.respond_to?(:caller_locations)
                      caller_locations.map { |l| l.absolute_path || l.path }
                    else
@@ -16,6 +16,8 @@ module Gloves
       base_pathname = Pathname.new(base_path)
 
       Gloves.boot sub, base_pathname
+
+      super
     end
 
     def initialize(without_run = false)
